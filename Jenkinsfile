@@ -1,7 +1,6 @@
 parameters {
-    choice choices: ['Plan', 'Apply', 'Destroy'], description: 'pickup any one', name: 'Action'
-    choice choices: ['Import'], description: 'to import state file', name: 'Terraform Import'
-    activeChoice choiceType: 'PT_CHECKBOX', description: 'pickup one', filterLength: 1, filterable: false, name: 'Terraform State', randomName: 'choice-parameter-189674809471088', script: groovyScript(fallbackScript: [classpath: [], oldScript: '', sandbox: true, script: 'return[\'error\']'], script: [classpath: [], oldScript: '', sandbox: true, script: 'return[\'Show\' , \'List\' , \'Remove \']'])
+    choice choices: ['Plan', 'Apply', 'Destroy','State' , 'Import'], description: 'pickup any one', name: 'Action'
+    string description: 'Terraform Arguments', name: 'ARGUMENTS'
 }
 
 pipeline {
@@ -82,12 +81,12 @@ options {
         }
         stage('Terraform Import') {
             when {
-                expression { params.Action == 'Import'}
+                expression { params.Action == 'Import' && params.ARGUMENTS != "" }
             }
             steps {
                 script {
                     echo "Executing terraform import for azure account, Importing Terraform Statefile...."
-                    sh 'terraform import azurerm_resource_group.example02 /subscriptions/44072bee-09d8-4fd1-9150-46a2662697d7/resourceGroups/example02'
+                    sh 'terraform import ${params.ARGUMENTS}'
                 }
             }
         }
