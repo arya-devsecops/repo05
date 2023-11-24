@@ -1,7 +1,7 @@
 parameters {
     choice choices: ['Plan', 'Apply', 'Destroy'], description: 'pickup any one', name: 'Action'
     choice choices: ['Import'], description: 'to import state file', name: 'Terraform Import'
-    activeChoice choiceType: 'PT_CHECKBOX', description: 'pickup one', filterLength: 1, filterable: false, name: 'Terraform State', randomName: 'choice-parameter-189674809471088', script: groovyScript(fallbackScript: [classpath: [], oldScript: '', sandbox: true, script: 'return[\'error\']'], script: [classpath: [], oldScript: '', sandbox: true, script: 'return[\'status\' , \'list\' , \'remove \']'])
+    activeChoice choiceType: 'PT_CHECKBOX', description: 'pickup one', filterLength: 1, filterable: false, name: 'Terraform State', randomName: 'choice-parameter-189674809471088', script: groovyScript(fallbackScript: [classpath: [], oldScript: '', sandbox: true, script: 'return[\'error\']'], script: [classpath: [], oldScript: '', sandbox: true, script: 'return[\'so\' , \'list\' , \'remove \']'])
 }
 
 pipeline {
