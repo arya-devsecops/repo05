@@ -1,4 +1,8 @@
-parameters([choice(name: 'Action' , choices: ['Plan' , 'Apply' , 'Destroy' , 'Import' , 'State'] , description: 'Please select the action')])
+parameters {
+  activeChoice choiceType: 'PT_SINGLE_SELECT', description: 'Please pickup one', filterLength: 1, filterable: false, name: 'Action', randomName: 'choice-parameter-188641282856014', script: groovyScript(fallbackScript: [classpath: [], oldScript: '', sandbox: true, script: 'return[\'error\']'], script: [classpath: [], oldScript: '', sandbox: true, script: 'return[\'Plan\' , \'Apply\' . \'Destroy\' , \'Import\' , \'State\']'])
+  activeChoiceHtml choiceType: 'ET_UNORDERED_LIST', description: 'select one', name: 'State', omitValueField: false, randomName: 'choice-parameter-188641285299782', referencedParameters: 'Sate', script: groovyScript(fallbackScript: [classpath: [], oldScript: '', sandbox: true, script: 'return[\'error\']'], script: [classpath: [], oldScript: '', sandbox: true, script: 'return[\'show\' , \'list\' , \'remove\']'])
+}
+
 pipeline {
     agent any
 options {
